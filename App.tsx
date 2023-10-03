@@ -1,11 +1,12 @@
-import {View, Text} from 'react-native';
 import React from 'react';
+import StackRoutes from './src/routes/StackRoutes';
+import {NavigationContainer} from '@react-navigation/native';
 
 const App = () => {
   return (
-    <View>
-      <Text>App</Text>
-    </View>
+    <NavigationContainer>
+      <StackRoutes />
+    </NavigationContainer>
   );
 };
 
