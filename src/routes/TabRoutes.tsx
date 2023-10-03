@@ -10,9 +10,25 @@ const Tab = createBottomTabNavigator<IRootTabParamList>();
 const TabRoutes = () => {
   return (
     <Tab.Navigator initialRouteName="Home">
-      <Tab.Screen name="RecentFiles" component={RecentFiles} />
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="FavoriteFiles" component={FavoriteFiles} />
+      <Tab.Screen
+        name="RecentFiles"
+        component={RecentFiles}
+        options={{
+          title: 'Recent',
+        }}
+      />
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{headerShown: false, headerTransparent: true}}
+      />
+      <Tab.Screen
+        name="FavoriteFiles"
+        component={FavoriteFiles}
+        options={{
+          title: 'Favorite',
+        }}
+      />
     </Tab.Navigator>
   );
 };
