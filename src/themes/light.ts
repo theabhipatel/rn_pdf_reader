@@ -1,30 +1,28 @@
 import {createTheme} from '@shopify/restyle';
 
-const palette = {
-  purpleLight: '#8C6FF7',
-  purplePrimary: '#5A31F4',
+export const palette = {
+  // purpleLight: '#8C6FF7',
+  // purplePrimary: '#5A31F4',
   purpleDark: '#3F22AB', // '#900C3F', '#C70039', '#F94C10', '#F8DE22',
   mehroon: '#C70039d4',
   lightRed: '#F94C104a',
 
-  greenLight: '#56DCBA',
-  greenPrimary: '#0ECD9D',
-  greenDark: '#0A906E',
+  // greenLight: '#56DCBA',
+  // greenPrimary: '#0ECD9D',
+  // greenDark: '#0A906E',
 
   black: '#0B0B0B',
-  white: '#F0F2F3',
+  white: '#FFFFFF',
+  whiteMilk: '#F0F2F3',
 };
 
 const theme = createTheme({
   colors: {
     $primary: palette.lightRed,
+    $whiteMilk: palette.whiteMilk,
     white: palette.white,
     black: palette.black,
     mehroon: palette.mehroon,
-
-    // -------------
-    mainBackground: palette.white,
-    cardPrimaryBackground: palette.purplePrimary,
   },
   spacing: {
     xs: 4,

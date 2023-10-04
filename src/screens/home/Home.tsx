@@ -5,7 +5,7 @@ import Text from '../../themes/Text';
 
 const Home = () => {
   return (
-    <Box flex={1} justifyContent="center" alignItems="center" bg="white">
+    <Box flex={1} justifyContent="center" alignItems="center" bg="$whiteMilk">
       <Box bg="$primary" p="lg" borderRadius={100}>
         <Box bg="mehroon" p="lg" borderRadius={100} opacity={1.6}>
           <Image
