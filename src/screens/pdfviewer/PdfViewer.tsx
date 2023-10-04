@@ -1,13 +1,13 @@
-import {View, Text, ActivityIndicator} from 'react-native';
 import React from 'react';
 import Pdf from 'react-native-pdf';
+import Box from '../../themes/Box';
 
 const PdfViewer = ({route}: any) => {
-  console.log('----- routes -------->', route.params);
+  // console.log('----- routes -------->', route.params);
 
   return (
     <>
-      <View style={{flex: 1}}>
+      <Box flex={1}>
         <Pdf
           source={{
             uri: route.params.pdfUri,
@@ -27,7 +27,7 @@ const PdfViewer = ({route}: any) => {
             width: '100%',
           }}
         />
-      </View>
+      </Box>
     </>
   );
 };
