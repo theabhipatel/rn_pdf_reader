@@ -27,6 +27,7 @@ const TabRoutes = () => {
         component={RecentFiles}
         options={{
           title: 'Recent',
+          headerTransparent: true,
           tabBarIcon: ({focused}) => (
             <>
               {focused ? (

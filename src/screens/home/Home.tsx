@@ -63,14 +63,9 @@ const Home: FC<IProps> = ({navigation}) => {
   const handleOpenPdfFile = async (filePath: string, fileName: string) => {
     try {
       const fileContents = await RNFS.readFile(filePath, 'base64');
-      const internalFilePath = `${RNFS.CachesDirectoryPath}/${fileName}`;
+      const internalFilePath = `${RNFS.ExternalDirectoryPath}/recent/${fileName}`;
 
       await RNFS.writeFile(internalFilePath, fileContents, 'base64');
-
-      // const newfilePath = await RNFS.stat(filePath);
-      // console.log('----- newfilePath ---------> ', newfilePath);
-
-      //  resolveLocalFileURL(filePath);
 
       navigation.navigate('PdfViewer', {pdfUri: internalFilePath});
       setIsOpeningInitialUrl(false);
