@@ -16,6 +16,10 @@
     "@shopify/restyle": "^2.4.2",
     "react": "18.2.0",
     "react-native": "0.72.5",
+    "react-native-blob-util": "^0.19.1",
+    "react-native-document-picker": "^9.0.1",
+    "react-native-fs": "^2.20.0",
+    "react-native-pdf": "^6.7.1",
     "react-native-safe-area-context": "^4.7.2",
     "react-native-screens": "^3.25.0"
   },
