@@ -48,9 +48,7 @@ const Home: FC<IProps> = ({navigation}) => {
       const result = await DocumentPicker.pick({
         type: [DocumentPicker.types.pdf],
       });
-      console.log('---- result --->', result);
-      // openFileInAnotherApp(result[0].uri);
-      // navigation.navigate('PDFViewer', {pdfUri: result[0].uri});
+
       handleOpenPdfFile(result[0].uri, result[0].name!);
     } catch (err) {
       if (DocumentPicker.isCancel(err)) {
@@ -92,9 +90,9 @@ const Home: FC<IProps> = ({navigation}) => {
 
   return (
     <Box flex={1} justifyContent="center" alignItems="center" bg="$whiteMilk">
-      <Box bg="$primary" p="lg" borderRadius={100}>
+      <Box bg="$lightRed" p="lg" borderRadius={100}>
         <TouchableOpacity onPress={openPdfDocument}>
-          <Box bg="mehroon" p="lg" borderRadius={100} opacity={1.6}>
+          <Box bg="$primary" p="lg" borderRadius={100} opacity={1.6}>
             <Image
               source={require('../../images/pdf-1.png')}
               style={{width: 100, height: 100}}

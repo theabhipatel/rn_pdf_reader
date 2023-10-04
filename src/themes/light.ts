@@ -18,11 +18,11 @@ export const palette = {
 
 const theme = createTheme({
   colors: {
-    $primary: palette.lightRed,
+    $primary: palette.mehroon,
+    $lightRed: palette.lightRed,
     $whiteMilk: palette.whiteMilk,
     white: palette.white,
     black: palette.black,
-    mehroon: palette.mehroon,
   },
   spacing: {
     xs: 4,
