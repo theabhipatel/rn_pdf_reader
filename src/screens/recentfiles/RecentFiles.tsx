@@ -235,7 +235,7 @@ export const RecentFilesCompo: FC<{isFavorite?: boolean}> = ({isFavorite}) => {
       ) : isFavorite &&
         files.filter(file => file.isFavorite === true).length === 0 ? (
         <Box flex={1} justifyContent="center" alignItems="center">
-          <Text>No Favorite files yet !!!</Text>
+          <Text>No Favorite files yet !</Text>
         </Box>
       ) : (
         <FlatList
