@@ -6,6 +6,7 @@ export const palette = {
   purpleDark: '#3F22AB', // '#900C3F', '#C70039', '#F94C10', '#F8DE22',
   mehroon: '#C70039d4',
   lightRed: '#F94C104a',
+  yellow: '#F8DE22',
 
   // greenLight: '#56DCBA',
   // greenPrimary: '#0ECD9D',
@@ -18,11 +19,11 @@ export const palette = {
 
 const theme = createTheme({
   colors: {
-    $primary: palette.lightRed,
+    $primary: palette.mehroon,
+    $lightRed: palette.lightRed,
     $whiteMilk: palette.whiteMilk,
     white: palette.white,
     black: palette.black,
-    mehroon: palette.mehroon,
   },
   spacing: {
     xs: 4,

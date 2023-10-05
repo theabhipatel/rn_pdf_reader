@@ -1,11 +1,11 @@
-import {View, Text} from 'react-native';
 import React from 'react';
+import {RecentFilesCompo} from '../recentfiles/RecentFiles';
 
 const FavoriteFiles = () => {
   return (
-    <View>
-      <Text>FavoriteFiles</Text>
-    </View>
+    <>
+      <RecentFilesCompo isFavorite />
+    </>
   );
 };
 

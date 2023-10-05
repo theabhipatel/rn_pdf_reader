@@ -1,5 +1,6 @@
 export type IRootStackParamList = {
   Dashboard: undefined;
+  PdfViewer: {pdfUri: string};
 };
 
 export type IRootTabParamList = {

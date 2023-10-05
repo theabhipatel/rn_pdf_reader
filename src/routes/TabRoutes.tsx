@@ -27,6 +27,7 @@ const TabRoutes = () => {
         component={RecentFiles}
         options={{
           title: 'Recent',
+          headerTransparent: true,
           tabBarIcon: ({focused}) => (
             <>
               {focused ? (
@@ -39,7 +40,7 @@ const TabRoutes = () => {
                     justifyContent="center"
                     alignItems="center"
                     bg="$whiteMilk">
-                    <Box p="md" bg="mehroon" borderRadius={40}>
+                    <Box p="md" bg="$primary" borderRadius={40}>
                       <Image
                         source={require('../images/recent.png')}
                         style={{
@@ -61,7 +62,7 @@ const TabRoutes = () => {
                       tintColor: focused ? palette.mehroon : palette.black,
                     }}
                   />
-                  <Text fontSize={12} color={focused ? 'mehroon' : 'black'}>
+                  <Text fontSize={12} color={focused ? '$primary' : 'black'}>
                     Recent
                   </Text>
                 </Box>
@@ -88,7 +89,7 @@ const TabRoutes = () => {
                     justifyContent="center"
                     alignItems="center"
                     bg="$whiteMilk">
-                    <Box p="md" bg="mehroon" borderRadius={40}>
+                    <Box p="md" bg="$primary" borderRadius={40}>
                       <Image
                         source={require('../images/home.png')}
                         style={{
@@ -110,7 +111,7 @@ const TabRoutes = () => {
                       tintColor: focused ? palette.mehroon : palette.black,
                     }}
                   />
-                  <Text fontSize={12} color={focused ? 'mehroon' : 'black'}>
+                  <Text fontSize={12} color={focused ? '$primary' : 'black'}>
                     Home
                   </Text>
                 </Box>
@@ -124,6 +125,7 @@ const TabRoutes = () => {
         component={FavoriteFiles}
         options={{
           title: 'Favorite',
+          headerTransparent: true,
           tabBarIcon: ({focused}) => (
             <>
               {focused ? (
@@ -136,7 +138,7 @@ const TabRoutes = () => {
                     justifyContent="center"
                     alignItems="center"
                     bg="$whiteMilk">
-                    <Box p="md" bg="mehroon" borderRadius={40}>
+                    <Box p="md" bg="$primary" borderRadius={40}>
                       <Image
                         source={require('../images/star.png')}
                         style={{
@@ -158,7 +160,7 @@ const TabRoutes = () => {
                       tintColor: focused ? palette.mehroon : palette.black,
                     }}
                   />
-                  <Text fontSize={12} color={focused ? 'mehroon' : 'black'}>
+                  <Text fontSize={12} color={focused ? '$primary' : 'black'}>
                     Favorite
                   </Text>
                 </Box>
