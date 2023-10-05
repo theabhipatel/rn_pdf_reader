@@ -14,26 +14,54 @@ import {
   IRootStackParamList,
   IRootTabParamList,
 } from '../../routes/navigationTypes';
-import {CompositeScreenProps} from '@react-navigation/native';
+import {CompositeScreenProps, useIsFocused} from '@react-navigation/native';
 import {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
 import {palette} from '../../themes/light';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {saveDataToStorage} from '../../utils';
 
 type IProps = CompositeScreenProps<
   BottomTabScreenProps<IRootTabParamList, 'Home'>,
   NativeStackScreenProps<IRootStackParamList>
 >;
 
+export interface IFiles {
+  name: string;
+  path: string;
+  isFavorite: boolean;
+  size: number;
+  updatedAt: number;
+}
+
 const Home: FC<IProps> = ({navigation}) => {
   const [isOpeningInitialUrl, setIsOpeningInitialUrl] = useState(true);
+
+  const [files, setFiles] = useState<IFiles[]>([]);
+
+  // console.log('----- files from home ---->', files);
 
   useEffect(() => {
     handleDeepLink();
   }, []);
 
+  const isFocused = useIsFocused();
+
+  useEffect(() => {
+    handleGetAllFile();
+  }, [isFocused]);
+
+  /** ----> getting all files by Async Storage */
+  const handleGetAllFile = async () => {
+    const allFiles = await AsyncStorage.getItem('@files');
+    if (allFiles) {
+      setFiles(JSON.parse(allFiles));
+    }
+  };
+
   /** ----> handling deeplinking initial url */
   const handleDeepLink = async () => {
     const initialUrl = await Linking.getInitialURL();
-    console.log('------ initialUrl -------> ', initialUrl);
+    // console.log('------ initialUrl -------> ', initialUrl);
     if (initialUrl) {
       setIsOpeningInitialUrl(true);
       handleOpenPdfFile(initialUrl, Date.now().toString());
@@ -42,8 +70,8 @@ const Home: FC<IProps> = ({navigation}) => {
     }
   };
 
-  /** ----> opening pdf file from device storage */
-  const openPdfDocument = async () => {
+  /** ----> opening  files to pick pdf from device storage */
+  const handlePickPdfDocument = async () => {
     try {
       const result = await DocumentPicker.pick({
         type: [DocumentPicker.types.pdf],
@@ -59,7 +87,7 @@ const Home: FC<IProps> = ({navigation}) => {
     }
   };
 
-  /** ----> caching and  opening file in pdf viewer */
+  /** ----> coping file in storage and  opening file in pdf viewer */
   const handleOpenPdfFile = async (filePath: string, fileName: string) => {
     try {
       const fileContents = await RNFS.readFile(filePath, 'base64');
@@ -67,9 +95,36 @@ const Home: FC<IProps> = ({navigation}) => {
 
       await RNFS.writeFile(internalFilePath, fileContents, 'base64');
 
+      setFiles(prev => {
+        const isFileExists = prev.find(item => item.path === internalFilePath);
+        if (isFileExists) {
+          return prev.map(file => {
+            if (file.path === internalFilePath) {
+              return {...file, updatedAt: Date.now()};
+            }
+            return file;
+          });
+        } else {
+          return [
+            ...prev,
+            {
+              name: fileName,
+              isFavorite: false,
+              path: internalFilePath,
+              size: 34,
+              updatedAt: Date.now(),
+            },
+          ];
+        }
+      });
+
+      setFiles(prev => {
+        saveDataToStorage(prev);
+        return prev;
+      });
+
       navigation.navigate('PdfViewer', {pdfUri: internalFilePath});
       setIsOpeningInitialUrl(false);
-      console.log('internalFilePath ---->', internalFilePath);
     } catch (error) {
       console.error('Error opening file:', error);
     }
@@ -86,7 +141,7 @@ const Home: FC<IProps> = ({navigation}) => {
   return (
     <Box flex={1} justifyContent="center" alignItems="center" bg="$whiteMilk">
       <Box bg="$lightRed" p="lg" borderRadius={100}>
-        <TouchableOpacity onPress={openPdfDocument}>
+        <TouchableOpacity onPress={handlePickPdfDocument}>
           <Box bg="$primary" p="lg" borderRadius={100} opacity={1.6}>
             <Image
               source={require('../../images/pdf-1.png')}

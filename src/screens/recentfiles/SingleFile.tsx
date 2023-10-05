@@ -6,19 +6,28 @@ import Text from '../../themes/Text';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {IRootStackParamList} from '../../routes/navigationTypes';
 import RNFS, {ReadDirItem} from 'react-native-fs';
+import {IFiles} from '../home/Home';
 
 type NavigationPropType = NavigationProp<IRootStackParamList>;
 interface IProps {
-  file: ListRenderItemInfo<ReadDirItem>;
-  handleFileDelete: (fileName: string) => void;
+  file: ListRenderItemInfo<IFiles>;
+  handleFileDelete: (filePath: string) => void;
+  handleFileFavorite: (fileName: string) => void;
+  handleUpdateUpdatedAt: (fileName: string) => void;
 }
 
-const SingleFile: FC<IProps> = ({file, handleFileDelete}) => {
+const SingleFile: FC<IProps> = ({
+  file,
+  handleFileDelete,
+  handleFileFavorite,
+  handleUpdateUpdatedAt,
+}) => {
   const navigation = useNavigation<NavigationPropType>();
-  const {name, path} = file.item;
+  const {name, path, isFavorite, updatedAt} = file.item;
 
   const handlFileOpen = (filePath: string) => {
     navigation.navigate('PdfViewer', {pdfUri: filePath});
+    handleUpdateUpdatedAt(name);
   };
 
   const fileName = `${name.slice(0, 12)}...pdf`;
@@ -47,10 +56,16 @@ const SingleFile: FC<IProps> = ({file, handleFileDelete}) => {
         </Box>
       </TouchableOpacity>
       <Box flexDirection="row" width={'30%'} justifyContent="space-between">
-        <TouchableOpacity style={{padding: 8}}>
+        <TouchableOpacity
+          style={{padding: 8}}
+          onPress={() => handleFileFavorite(name)}>
           <Image
             source={require('../../images/star.png')}
-            style={{width: 20, height: 20, tintColor: palette.white}}
+            style={{
+              width: 20,
+              height: 20,
+              tintColor: isFavorite ? palette.yellow : palette.white,
+            }}
           />
         </TouchableOpacity>
         <TouchableOpacity
