@@ -125,6 +125,7 @@ const TabRoutes = () => {
         component={FavoriteFiles}
         options={{
           title: 'Favorite',
+          headerTransparent: true,
           tabBarIcon: ({focused}) => (
             <>
               {focused ? (
