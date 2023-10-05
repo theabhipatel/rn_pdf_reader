@@ -5,14 +5,21 @@ import {ActivityIndicator, FlatList, Image, StatusBar} from 'react-native';
 import {palette} from '../../themes/light';
 import RNFS from 'react-native-fs';
 import SingleFile from './SingleFile';
-import {useIsFocused} from '@react-navigation/native';
+import {CompositeScreenProps, useIsFocused} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {IFiles} from '../home/Home';
 import {saveDataToStorage} from '../../utils';
 import {NativeStackScreenProps} from '@react-navigation/native-stack/lib/typescript/src/types';
-import {IRootStackParamList} from '../../routes/navigationTypes';
+import {
+  IRootStackParamList,
+  IRootTabParamList,
+} from '../../routes/navigationTypes';
+import {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
 
-type IProps = NativeStackScreenProps<IRootStackParamList>;
+type IProps = CompositeScreenProps<
+  BottomTabScreenProps<IRootTabParamList, 'RecentFiles'>,
+  NativeStackScreenProps<IRootStackParamList>
+>;
 
 const RecentFiles: FC<IProps> = () => {
   const [isLoading, setIsLoading] = useState(false);
