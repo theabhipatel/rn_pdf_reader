@@ -1,16 +1,9 @@
 import {createTheme} from '@shopify/restyle';
 
 export const palette = {
-  // purpleLight: '#8C6FF7',
-  // purplePrimary: '#5A31F4',
-  purpleDark: '#3F22AB', // '#900C3F', '#C70039', '#F94C10', '#F8DE22',
   mehroon: '#C70039d4',
   lightRed: '#F94C104a',
-  yellow: '#F8DE22',
-
-  // greenLight: '#56DCBA',
-  // greenPrimary: '#0ECD9D',
-  // greenDark: '#0A906E',
+  gold: '#ffd200',
 
   black: '#0B0B0B',
   white: '#FFFFFF',

@@ -224,7 +224,7 @@ export const RecentFilesCompo: FC<{isFavorite?: boolean}> = ({isFavorite}) => {
   /** ----> after data is loaded showing component */
   return (
     <Box flex={1}>
-      <Box my="lg" />
+      <Box my="xl" />
 
       {files.length === 0 ? (
         <Box flex={1} justifyContent="center" alignItems="center">
