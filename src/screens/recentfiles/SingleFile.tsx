@@ -89,7 +89,7 @@ const SingleFile: FC<IProps> = ({
             style={{
               width: 20,
               height: 20,
-              tintColor: isFavorite ? palette.yellow : palette.white,
+              tintColor: isFavorite ? palette.gold : palette.white,
             }}
           />
         </TouchableOpacity>

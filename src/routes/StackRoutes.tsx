@@ -3,6 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import TabRoutes from './TabRoutes';
 import {IRootStackParamList} from './navigationTypes';
 import PdfViewer from '../screens/pdfviewer/PdfViewer';
+import {palette} from '../themes/light';
 
 const Stack = createNativeStackNavigator<IRootStackParamList>();
 
@@ -17,7 +18,13 @@ const StackRoutes = () => {
       <Stack.Screen
         name="PdfViewer"
         component={PdfViewer}
-        options={{headerShown: true}}
+        options={{
+          headerShown: true,
+          headerShadowVisible: false,
+          headerTitleStyle: {color: palette.white},
+          headerTintColor: '#fff',
+          headerStyle: {backgroundColor: palette.mehroon},
+        }}
       />
     </Stack.Navigator>
   );

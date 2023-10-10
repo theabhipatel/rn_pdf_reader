@@ -19,6 +19,8 @@ const TabRoutes = () => {
         tabBarShowLabel: false,
         tabBarStyle: {
           backgroundColor: palette.white,
+          height: 65,
+          paddingTop: 5,
         },
         headerShadowVisible: false,
       }}>
@@ -26,7 +28,7 @@ const TabRoutes = () => {
         name="RecentFiles"
         component={RecentFiles}
         options={{
-          title: 'Recent',
+          title: 'Recent Files',
           headerTransparent: true,
           tabBarIcon: ({focused}) => (
             <>
@@ -34,7 +36,7 @@ const TabRoutes = () => {
                 <Box p="sm" justifyContent="center" alignItems="center">
                   <Box
                     position="absolute"
-                    bottom={1}
+                    bottom={10}
                     borderRadius={40}
                     p="sm"
                     justifyContent="center"
@@ -83,7 +85,7 @@ const TabRoutes = () => {
                 <Box p="sm" justifyContent="center" alignItems="center">
                   <Box
                     position="absolute"
-                    bottom={1}
+                    bottom={10}
                     borderRadius={40}
                     p="sm"
                     justifyContent="center"
@@ -132,7 +134,7 @@ const TabRoutes = () => {
                 <Box p="sm" justifyContent="center" alignItems="center">
                   <Box
                     position="absolute"
-                    bottom={1}
+                    bottom={10}
                     borderRadius={40}
                     p="sm"
                     justifyContent="center"
