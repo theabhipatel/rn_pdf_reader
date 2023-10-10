@@ -9,6 +9,7 @@ import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactNativeHost;
 import com.facebook.soloader.SoLoader;
 import java.util.List;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -27,6 +28,13 @@ public class MainApplication extends Application implements ReactApplication {
           // packages.add(new MyReactNativePackage());
           return packages;
         }
+        //  @Override
+        // protected List<ReactPackage> getPackages() {
+        //     return Arrays.<ReactPackage>asList(
+        //             new MainReactPackage(),
+        //     new SplashScreenReactPackage()  //here
+        //     );
+        // }
 
         @Override
         protected String getJSMainModuleName() {
