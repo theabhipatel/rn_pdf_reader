@@ -6,9 +6,11 @@ import theme from './src/themes';
 import RNFS from 'react-native-fs';
 import {StatusBar} from 'react-native';
 import {palette} from './src/themes/light';
+import SplashScreen from 'react-native-splash-screen';
 
 const App = () => {
   useEffect(() => {
+    SplashScreen.hide();
     handleCheckDirExists();
   }, []);
 
